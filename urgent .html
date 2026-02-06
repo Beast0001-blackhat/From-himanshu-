@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #fff5f5, #ffe6e6); /* Creamy white with a soft pink tint */
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Scattered heart emojis as background elements */
+        body::before {
+            content: "❤️ 💖 💕 💓 💗 💘";
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 2em;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        body::after {
+            content: "🌹 💕 ❤️ 💖 💗";
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 1.5em;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        h1 {
+            color: red;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .buttons {
+            margin: 20px 0;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+        #no {
+            background-color: #ccc;
+            color: #666;
+            position: relative;
+        }
+        #no:hover {
+            animation: moveAway 0.5s ease-in-out;
+        }
+        @keyframes moveAway {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(100px); }
+            50% { transform: translateY(-50px); }
+            75% { transform: translateX(-100px); }
+            100% { transform: translateY(0); }
+        }
+        #message {
+            display: none;
+            font-size: 1.2em;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hearts {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    <div id="message">
+        <div class="hearts">❤️ 💖 💕 💓 💗 💘 🌹</div>
+        <p>Yay! She said YES<br>
+        Congratulations Kanan ❤️<br>
+        This moment just became a beautiful memory<br>
+        You are my today, my tomorrow, and my forever.<br>
+        Thank you for being my best friend, my haggu and future wife 😁😄<br>
+        I love you endlessly ❤️❤️🌹🌹</p>
+        <div class="hearts">💕 ❤️ 🌹 💖</div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const message = document.getElementById('message');
+
+        // Make "No" button move away on hover
+        noButton.addEventListener('mouseover', () => {
+            const randomX = Math.random() * 200 - 100; // Random horizontal movement
+            const randomY = Math.random() * 200 - 100; // Random vertical movement
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        // Reset position on mouse leave (optional, for fun)
+        noButton.addEventListener('mouseleave', () => {
+            noButton.style.transform = 'translate(0, 0)';
+        });
+
+        // Show message on Yes click
+        yesButton.addEventListener('click', () => {
+            message.style.display = 'block';
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
